@@ -1,7 +1,7 @@
 FROM php:7.2-fpm
 
 # Copy composer.lock and composer.json
-COPY composer.lock composer.json /var/www/
+#COPY composer.lock composer.json /var/www/
 
 # Set working directory
 WORKDIR /var/www
@@ -29,7 +29,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Xdebug
 RUN pecl install xdebug
-RUN docker-php-e/var/www/xt-enable xdebug
+RUN docker-php-ext-enable xdebug
 
 # Install extensions
 RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl
